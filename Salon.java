@@ -82,8 +82,9 @@ public class Salon{
     }
 
     public void setEvento(Evento[] eventos){
-
+        this.eventos = eventos;
     }
+
 
     public String toString() {
         return "El numero es "+numero+" la capacidad es "+capacidad+" el costo es "+costo+" y el tamaño es"+tamano;
