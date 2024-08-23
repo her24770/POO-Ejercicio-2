@@ -104,8 +104,8 @@ public class Evento{
      * 
      * @param Salon Salon que se asigna al evento
      */
-    public void setSalon(Salon Salon){
-        this.Salon = Salon;
+    public void setSalon(Salon salon){
+        this.salon = salon;
     }
 
     /**

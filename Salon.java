@@ -1,5 +1,6 @@
-
-
+/**
+ * clase que guarda los datos de los salones y la cola de espera al validar las reservas
+ */
 public class Salon{
     private int numero;
     private int capacidad;
@@ -8,15 +9,16 @@ public class Salon{
     private Evento[] eventos;
 
     //Metodos
-    public Salon(){
+    /**
+     * Constructor personalizado de la clase
+     */
+    public Salon(int numero, int capacidad, int costo, String tamano){
         this.numero = numero;
         this.capacidad = capacidad;
         this.costo = costo;
         this.tamano = tamano;
     }
     
-    //Gets de los atributos
-
     /**
      * @return valor variable numero
      */
@@ -45,7 +47,7 @@ public class Salon{
         return tamano;
     }
 
-    public Evento getEvento(Evento[] eventos){
+    public Evento[] getEvento(Evento[] eventos){
         return eventos;
     }
 
