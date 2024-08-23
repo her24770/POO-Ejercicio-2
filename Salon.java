@@ -12,11 +12,12 @@ public class Salon{
     /**
      * Constructor personalizado de la clase
      */
-    public Salon(int numero, int capacidad, int costo, String tamano){
+    public Salon(int numero, int capacidad, int costo, String tamano, Evento[] eventos){
         this.numero = numero;
         this.capacidad = capacidad;
         this.costo = costo;
         this.tamano = tamano;
+        this.eventos = eventos;
     }
     
     /**
