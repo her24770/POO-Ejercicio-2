@@ -12,6 +12,10 @@ public class Salon{
     /**
      * Constructor personalizado de la clase
      */
+    public Salon(){
+        
+    }
+
     public Salon(int numero, int capacidad, int costo, String tamano, Evento[] eventos){
         this.numero = numero;
         this.capacidad = capacidad;
