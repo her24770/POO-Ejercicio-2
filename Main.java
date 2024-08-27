@@ -32,23 +32,26 @@ public class Main{
     
     public static List<Salon> addSalon(List<Salon> list){
         Scanner sc = new Scanner(System.in);
-        Scanner sci = new Scanner(System.in);
         Salon newsalon = new Salon(); 
 
-        System.out.println("Ingrese el numero del salon");
+        System.out.print("Ingrese el numero del salon : ");
         //vlidar que no exista el salon antes
 
-        int po = sci.nextInt();
-        int z = 0;
-        while(z == 0){
+        int po = Integer.parseInt(sc.nextLine());
+        Boolean z = true;
+        while(z == true){
+            if (list.isEmpty()) {
+                newsalon.setNumero(po);
+                z = false;
+            }
             for(Salon salon : list){
                     if(salon.getNumero() == po){
                         System.out.println("Este numero de salon ya esta en uso, eliga otro");
-                        po = sci.nextInt();
+                        po = Integer.parseInt(sc.nextLine());
                     }
                     else{
                         newsalon.setNumero(Integer.parseInt(sc.nextLine()));
-                        z = z+1;
+                        z = false;
                     }
                 }
         }
@@ -61,7 +64,7 @@ public class Main{
             System.out.println("         2. Mediano");
             System.out.println("         3. Pequeño");
 
-            op = sci.nextInt();
+            op = Integer.parseInt(sc.nextLine());
 
             if(op > 3  || op < 1){
                 System.out.println("Opcion invalida, eliga un numero entre el 1 al 3");
@@ -137,7 +140,7 @@ public class Main{
 
     //Funciones Evento
     public void addReserva(){
-        
+
         System.out.println("Selecccione un tipo de Evento");
         //listar las opcinoes de List externo
         System.out.println("Ingrese el nombre del encargado");
