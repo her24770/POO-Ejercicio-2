@@ -16,6 +16,13 @@ public class Main{
         }
         System.out.println(salones.size());
         System.out.println(salones.toString());
+
+
+        System.out.println("MENU");
+        System.out.println("1. Ingresar un nuevo salon");
+        System.out.println("2. Realizar una reservación");
+        System.out.println("3. Aprovar una reservacion");
+        System.out.println("4. Salir");
         
         
 
@@ -92,6 +99,7 @@ public class Main{
 
     //Funciones Evento
     public void addReserva(){
+        
         System.out.println("Selecccione un tipo de Evento");
         //listar las opcinoes de List externo
         System.out.println("Ingrese el nombre del encargado");
