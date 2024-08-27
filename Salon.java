@@ -92,7 +92,7 @@ public class Salon{
 
 
     public String toString() {
-        return "El numero es "+numero+" la capacidad es "+capacidad+" el costo es "+costo+" y el tamaño es"+tamano;
+        return "El numero es "+numero+" la capacidad es "+capacidad+" el costo es "+costo+" y el tamaño es "+tamano;
     }
 
 }
