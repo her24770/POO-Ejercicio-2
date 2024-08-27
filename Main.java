@@ -37,62 +37,100 @@ public class Main{
 
         System.out.println("Ingrese el numero del salon");
         //vlidar que no exista el salon antes
-        newsalon.setNumero(Integer.parseInt(sc.nextLine()));
-        System.out.println("Seleccione el tamaño del salon");
+
+        int po = sci.nextInt();
+        int z = 0;
+        while(z == 0){
+            for(Salon salon : list){
+                    if(salon.getNumero() == po){
+                        System.out.println("Este numero de salon ya esta en uso, eliga otro");
+                        po = sci.nextInt();
+                    }
+                    else{
+                        newsalon.setNumero(Integer.parseInt(sc.nextLine()));
+                        z = z+1;
+                    }
+                }
+        }
+
+        int r = 0;
+        int op;
+        while(r == 0){
+            System.out.println("Seleccione el tamaño del salon");
             System.out.println("         1. Grande");
             System.out.println("         2. Mediano");
             System.out.println("         3. Pequeño");
 
-        // String op =sc.nextLine();
-        // if(op!="1" || op!="2" || op!="3"){
+            op = sci.nextInt();
+
+            if(op > 3  || op < 1){
+                System.out.println("Opcion invalida, eliga un numero entre el 1 al 3");
+            }
+
+            else{
+                switch (op) {
+                    case 1:
+                        newsalon.setTamano("Grande");
+                        break;
+                    case 2:
+                        newsalon.setTamano("Mediano");
+                        break;
+        
+                    case 3:
+                        newsalon.setTamano("Pequeño");
+                        break;
+        
+                    default:
+                        break;
+                }
+
+                r = r+1;
+
+                System.out.println("Ingrese la capacidad del salon");
+                newsalon.setCapacidad(Integer.parseInt(sc.nextLine()));
+        
+                System.out.println("Ingrese el costo del salon");
+                newsalon.setCosto(Integer.parseInt(sc.nextLine()));
+        
+                list.add(newsalon);
+                return list;
+            }
+        }
+        // System.out.println("Seleccione el tamaño del salon");
+        //     System.out.println("         1. Grande");
+        //     System.out.println("         2. Mediano");
+        //     System.out.println("         3. Pequeño");
+
+        // int op = sci.nextInt();
+
+        // if(op > 3  || op < 1){
         //     System.out.println("Opcion invalida");
         // }
-        // switch (op) {
-        //     case "1":
-        //         newsalon.setTamano("Grande");
-        //         break;
-        //     case "2":
-        //         newsalon.setTamano("Mediano");
-        //         break;
-
-        //     case "3":
-        //         newsalon.setTamano("Pequeño");
-        //         break;
-
-        //     default:
-        //         break;
+        // else{
+        //     switch (op) {
+        //         case 1:
+        //             newsalon.setTamano("Grande");
+        //             break;
+        //         case 2:
+        //             newsalon.setTamano("Mediano");
+        //             break;
+    
+        //         case 3:
+        //             newsalon.setTamano("Pequeño");
+        //             break;
+    
+        //         default:
+        //             break;
+        //     }
+        //     System.out.println("Ingrese la capacidad del salon");
+        //     newsalon.setCapacidad(Integer.parseInt(sc.nextLine()));
+    
+        //     System.out.println("Ingrese el costo del salon");
+        //     newsalon.setCosto(Integer.parseInt(sc.nextLine()));
+    
+        //     list.add(newsalon);
+        //     return list;
         // }
-
-        int op = sci.nextInt();
-        if(op > 3  || op < 1){
-            System.out.println("Opcion invalida");
-
-        }
-        else{
-            switch (op) {
-                case 1:
-                    newsalon.setTamano("Grande");
-                    break;
-                case 2:
-                    newsalon.setTamano("Mediano");
-                    break;
-    
-                case 3:
-                    newsalon.setTamano("Pequeño");
-                    break;
-    
-                default:
-                    break;
-            }
-            System.out.println("Ingrese la capacidad del salon");
-            newsalon.setCapacidad(Integer.parseInt(sc.nextLine()));
-    
-            System.out.println("Ingrese el costo del salon");
-            newsalon.setCosto(Integer.parseInt(sc.nextLine()));
-    
-            list.add(newsalon);
-            return list;
-        }
             return list;
         
     }
