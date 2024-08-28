@@ -20,11 +20,11 @@ public class Main{
 
 
         System.out.println("MENU");
-        System.out.println("1. Ingresar un nuevo salon");
+        System.out.print("1. Ingresar un nuevo salon : ");
 
-        System.out.println("2. Realizar una reservación");
+        System.out.print("2. Realizar una reservación :");
 
-        System.out.println("3. Aprovar una reservacion");
+        System.out.print("3. Aprovar una reservacion :");
         
         System.out.println("4. Salir");
         
@@ -39,27 +39,23 @@ public class Main{
         Salon newsalon = new Salon(); 
 
         System.out.print("Ingrese el numero del salon : ");
-        //vlidar que no exista el salon antes
-
         int po = Integer.parseInt(sc.nextLine());
-        Boolean z = true;
-        while(z == true){
-            if (list.isEmpty()) {
-                newsalon.setNumero(po);
-                z = false;
-            }
-            for(Salon salon : list){
-                    if(salon.getNumero() == po){
-                        System.out.println("Este numero de salon ya esta en uso, eliga otro");
-                        po = Integer.parseInt(sc.nextLine());
-                    }
-                    else{
-                        newsalon.setNumero(Integer.parseInt(sc.nextLine()));
-                        z = false;
-                    }
-                }
-        }
 
+        boolean find = true;
+
+        while (find) {
+            find=false;
+            for (Salon salon : list) {
+                if (salon.getNumero() == po) find = true;
+            }
+            if (!find) {
+                newsalon.setNumero(po);
+            } else {
+                System.out.println("Este número de salón ya existe, elija otro:");
+                po = Integer.parseInt(sc.nextLine());
+            }
+        }
+        
         int r = 0;
         int op;
         while(r == 0){
