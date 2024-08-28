@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
@@ -142,14 +143,32 @@ public class Main{
     }
 
     //Funciones Evento
-    public void addReserva(){
+    List<String> eventosPosibles = List.of("Conferencia internacional", "Boda", "Gala", "Convivio", "Reunión de trabajo", "Bautizo");
 
-        System.out.println("Selecccione un tipo de Evento");
+    public void addReserva(){
+        //Creacion de scanner y evento
+        Scanner sc = new Scanner(System.in);
+        Evento evento = new Evento();
+
         //listar las opcinoes de List externo
+        for (int i=0; i<eventosPosibles.size(); i++){
+            System.out.print(i + "    " + eventosPosibles.get( i-1) + "\n");
+        }
+        
+        System.out.print("\nSelecccione un tipo de Evento: ");
+        evento.setTipo(eventosPosibles.get(Integer.parseInt(sc.nextLine())-1)); //Agrega el tipo a su atributo
+        
         System.out.println("Ingrese el nombre del encargado");
+        evento.setEncargado(sc.nextLine()); //agrega al atributo encargado
+
         System.out.println("Ingrese la fecha de inicio del evento");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+        // evento.setFecha_inicio(SimpleDateFormat(formato.parse(sc.nextLine()));
+
         System.out.println("Ingrese la duracion en horas del evento");
+
         System.out.println("Ingrese el numero de salon que quiere reservar");
+        
         //listar los salones
         //asignar valor aprobado false
     
