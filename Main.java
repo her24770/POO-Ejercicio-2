@@ -282,34 +282,26 @@ public class Main{
                                         eventoindex.setAprobado(true);
                                     }
                                 }
-                                for(Salon salonIndexUpdate:salones){
-                                    if(salonIndexUpdate.getNumero()==findSalon.getNumero()){
-                                        for(Evento eventoIndexUpdate:salonIndexUpdate.getEvento()){
-                                            if(updateEvento.getNombre()==eventoIndexUpdate.getNombre()){
-                                                eventoIndexUpdate.setAprobado(true);
-                                            }
-                                        }
-                                    }
-                                }
-
-                                //List<Evento> updateListEvento = findSalon.getEvento();
                                 
                                 
                             }
                         }
                         
                     }
-
-
-                    //validar fechas
-                    //obtener el numero del salon del evento
-                    //buscar si alguna fecha trasmonta con las del nuevo evento
-                    //si trasmonta poner que no y desaprobar
-                    //si no tramonta seguir y actualizar evento
                     break;
                 
                 case "4":
-                    
+                    System.out.println("\n ------------------ LISTA DE EVENTOS APROVADOS ------------------\n");
+                    int numeroEventosParovados=0;
+                    for(Evento eventoi:eventos){
+                        if(eventoi.getAprobado()==true){
+                            System.out.println(eventoi.toString());
+                            numeroEventosParovados++;
+                        }
+                    }
+                    if(numeroEventosParovados==0){
+                        System.out.println("No existen aun eventos aprovados");
+                    }
                     break;
                 case "5":
                     repeatMenu = false;
@@ -330,5 +322,3 @@ public class Main{
 }
 // funcion de aprovar peticion (pagar)
 // priorizar horarios al aprovar un salon
-// listar todos los eventos reservados
-// arreglar las funciones con strings y msg 
