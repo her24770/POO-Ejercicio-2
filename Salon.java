@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * clase que guarda los datos de los salones y la cola de espera al validar las reservas
  */
@@ -6,7 +9,7 @@ public class Salon{
     private int capacidad;
     private int costo;
     private String tamano;
-    private Evento[] eventos;
+    private List<Evento> eventos=new ArrayList();
 
     //Metodos
     /**
@@ -16,7 +19,7 @@ public class Salon{
         
     }
 
-    public Salon(int numero, int capacidad, int costo, String tamano, Evento[] eventos){
+    public Salon(int numero, int capacidad, int costo, String tamano, List<Evento> eventos){
         this.numero = numero;
         this.capacidad = capacidad;
         this.costo = costo;
@@ -52,7 +55,7 @@ public class Salon{
         return tamano;
     }
 
-    public Evento[] getEvento(Evento[] eventos){
+    public List<Evento> getEvento(){
         return eventos;
     }
 
@@ -86,7 +89,7 @@ public class Salon{
         this.tamano = tamano;
     }
 
-    public void setEvento(Evento[] eventos){
+    public void setEvento(List<Evento> eventos){
         this.eventos = eventos;
     }
 
