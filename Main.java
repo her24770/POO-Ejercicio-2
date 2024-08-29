@@ -19,7 +19,63 @@ public class Main{
         
         for (int i = 0; i<4; i++){
             System.out.println("\n--------NUEVO SALON-------\n");
-            salones = addSalon(salones);
+                    Salon newsalon = new Salon(); 
+
+                    System.out.print("Ingrese el numero del salon : ");
+                    int po = Integer.parseInt(scn.nextLine());
+
+                    boolean find = true;
+
+                    while (find) {
+                        find=false;
+                        for (Salon salon : salones) {
+                            if (salon.getNumero() == po) find = true;
+                        }
+                        if (!find) {
+                            newsalon.setNumero(po);
+                        } else {
+                            System.out.println("Este número de salón ya existe, elija otro:");
+                            po = Integer.parseInt(scn.nextLine());
+                        }
+                    }
+        
+                    int r = 0;
+                    int op;
+                    while(r == 0){
+                        System.out.println("Seleccione el tamaño del salon");
+                        System.out.println("         1. Grande");
+                        System.out.println("         2. Mediano");
+                        System.out.println("         3. Pequeño");
+                        op = Integer.parseInt(scn.nextLine());
+                        if(op > 3  || op < 1){
+                            System.out.println("Opcion invalida, eliga un numero entre el 1 al 3");
+                        }
+                        else{
+                            switch (op) {
+                                case 1:
+                                    newsalon.setTamano("Grande");
+                                    break;
+                                case 2:
+                                    newsalon.setTamano("Mediano");
+                                    break;
+                                case 3:
+                                    newsalon.setTamano("Pequeño");
+                                    break;
+                    
+                                default:
+                                    break;
+                            }
+
+                            r = r+1;
+
+                            System.out.println("Ingrese la capacidad del salon");
+                            newsalon.setCapacidad(Integer.parseInt(scn.nextLine()));
+                    
+                            System.out.println("Ingrese el costo del salon");
+                            newsalon.setCosto(Integer.parseInt(scn.nextLine()));
+                    
+                            salones.add(newsalon);
+                        }}
         }
 
         Boolean repeatMenu=true;
@@ -36,8 +92,65 @@ public class Main{
             switch (optionMenu) {
                 case "1":
                     System.out.println("Ingresar un salon");
-                    salones = addSalon(salones);
+                    Salon newsalon = new Salon(); 
+
+                    System.out.print("Ingrese el numero del salon : ");
+                    int po = Integer.parseInt(scn.nextLine());
+
+                    boolean find = true;
+
+                    while (find) {
+                        find=false;
+                        for (Salon salon : salones) {
+                            if (salon.getNumero() == po) find = true;
+                        }
+                        if (!find) {
+                            newsalon.setNumero(po);
+                        } else {
+                            System.out.println("Este número de salón ya existe, elija otro:");
+                            po = Integer.parseInt(scn.nextLine());
+                        }
+                    }
+        
+                    int r = 0;
+                    int op;
+                    while(r == 0){
+                        System.out.println("Seleccione el tamaño del salon");
+                        System.out.println("         1. Grande");
+                        System.out.println("         2. Mediano");
+                        System.out.println("         3. Pequeño");
+                        op = Integer.parseInt(scn.nextLine());
+                        if(op > 3  || op < 1){
+                            System.out.println("Opcion invalida, eliga un numero entre el 1 al 3");
+                        }
+                        else{
+                            switch (op) {
+                                case 1:
+                                    newsalon.setTamano("Grande");
+                                    break;
+                                case 2:
+                                    newsalon.setTamano("Mediano");
+                                    break;
+                                case 3:
+                                    newsalon.setTamano("Pequeño");
+                                    break;
+                    
+                                default:
+                                    break;
+                            }
+
+                            r = r+1;
+
+                            System.out.println("Ingrese la capacidad del salon");
+                            newsalon.setCapacidad(Integer.parseInt(scn.nextLine()));
+                    
+                            System.out.println("Ingrese el costo del salon");
+                            newsalon.setCosto(Integer.parseInt(scn.nextLine()));
+                    
+                            salones.add(newsalon);
+                        }}
                     break;
+
             
                 case "2":
                     System.out.println("Realizar una reservacion");
@@ -213,75 +326,6 @@ public class Main{
         
        scn.close();
 
-    }
-
-    //Funciones Salon
-    
-    public static List<Salon> addSalon(List<Salon> list){
-        Scanner sc = new Scanner(System.in);
-        Salon newsalon = new Salon(); 
-
-        System.out.print("Ingrese el numero del salon : ");
-        int po = Integer.parseInt(sc.nextLine());
-
-        boolean find = true;
-
-        while (find) {
-            find=false;
-            for (Salon salon : list) {
-                if (salon.getNumero() == po) find = true;
-            }
-            if (!find) {
-                newsalon.setNumero(po);
-            } else {
-                System.out.println("Este número de salón ya existe, elija otro:");
-                po = Integer.parseInt(sc.nextLine());
-            }
-        }
-        
-        int r = 0;
-        int op;
-        while(r == 0){
-            System.out.println("Seleccione el tamaño del salon");
-            System.out.println("         1. Grande");
-            System.out.println("         2. Mediano");
-            System.out.println("         3. Pequeño");
-            op = Integer.parseInt(sc.nextLine());
-            if(op > 3  || op < 1){
-                System.out.println("Opcion invalida, eliga un numero entre el 1 al 3");
-            }
-            else{
-                switch (op) {
-                    case 1:
-                        newsalon.setTamano("Grande");
-                        break;
-                    case 2:
-                        newsalon.setTamano("Mediano");
-                        break;
-        
-                    case 3:
-                        newsalon.setTamano("Pequeño");
-                        break;
-        
-                    default:
-                        break;
-                }
-
-                r = r+1;
-
-                System.out.println("Ingrese la capacidad del salon");
-                newsalon.setCapacidad(Integer.parseInt(sc.nextLine()));
-        
-                System.out.println("Ingrese el costo del salon");
-                newsalon.setCosto(Integer.parseInt(sc.nextLine()));
-        
-                list.add(newsalon);
-                return list;
-            }
-        }
-        sc.close();
-            return list;
-        
     }
 }
 // funcion de aprovar peticion (pagar)
