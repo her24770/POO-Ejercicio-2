@@ -54,7 +54,7 @@ public class Main{
                         System.out.println("         3. Pequeño");
                         op = Integer.parseInt(scn.nextLine());
                         if(op > 3  || op < 1){
-                            System.out.println("\nOpcion invalida, eliga un numero entre el 1 al 3"); //Valida la opcion
+                            System.out.println("\nOpcion invalida, elija un numero entre el 1 al 3"); //Valida la opcion
                         }
                         else{
                             switch (op) {
@@ -91,7 +91,7 @@ public class Main{
             System.out.println("\nMENU\n");
             System.out.println("1. Ingresar un nuevo salon : ");
             System.out.println("2. Realizar una reservación :");
-            System.out.println("3. Aprovar una reservacion :");
+            System.out.println("3. Aprobar una reservacion :");
             System.out.println("4. Lista de eventos");
             System.out.println("5. Salir");
             System.out.print("\nIngrese su opcion : ");
@@ -128,7 +128,7 @@ public class Main{
                         System.out.println("         3. Pequeño");
                         op = Integer.parseInt(scn.nextLine());
                         if(op > 3  || op < 1){
-                            System.out.println("\nOpcion invalida, eliga un numero entre el 1 al 3");
+                            System.out.println("\nOpcion invalida, elija un numero entre el 1 al 3");
                         }
                         else{
                             switch (op) {
@@ -170,7 +170,7 @@ public class Main{
                             System.out.print(i+1 + "    " + eventosPosibles.get(i) + "\n");
                         }
 
-                        System.out.print("\nSelecccione un tipo de Evento: ");
+                        System.out.print("\nSeleccione un tipo de Evento: ");
                         int Ntipo = Integer.parseInt(scn.nextLine()); 
                         //Valida existencia de tipo
                         if (Ntipo < eventosPosibles.size()+1){
