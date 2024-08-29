@@ -81,7 +81,7 @@ public class Evento{
      * @return inicio del evento, hora y dia
      */
     public Date getFecha_inicio(){
-        return fecha_fin;
+        return fecha_inicio;
     }
 
     /**
@@ -142,6 +142,6 @@ public class Evento{
         "\nInicio: " + fecha_inicio +
         "\nFin: " + fecha_fin + 
         "\nSalon: " + salon +
-        "\nAprobado" + aprobado;
+        "\nAprobado: " + aprobado;
     }
 }

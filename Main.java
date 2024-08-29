@@ -2,11 +2,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.ParseException;
 
 public class Main{
    
     public static void main(String[] args) {
         List<Salon> salones = new ArrayList<>();
+        List<Evento> eventos = new ArrayList<>();
         System.err.println("Bienvenido");
         
         System.out.println(salones.size());
@@ -27,8 +31,9 @@ public class Main{
         System.out.print("3. Aprovar una reservacion :");
         
         System.out.println("4. Salir");
-        
-        
+
+        addReserva(eventos, salones);
+       
 
     }
 
@@ -139,34 +144,107 @@ public class Main{
     }
 
     //Funciones Evento
-    List<String> eventosPosibles = List.of("Conferencia internacional", "Boda", "Gala", "Convivio", "Reunión de trabajo", "Bautizo");
-
-    public void addReserva(){
-        //Creacion de scanner y evento
+    
+    public static List<Evento> addReserva(List<Evento> list, List<Salon> salones){
+        //Creacion de scanner, eventos y evento
+        List<String> eventosPosibles = List.of("Conferencia internacional", "Boda", "Gala", "XV años", "Convivio", "Reunión de trabajo", "Bautizo");
+        List<String> eventosVIP = eventosPosibles.subList(0, 3);
         Scanner sc = new Scanner(System.in);
         Evento evento = new Evento();
 
-        //listar las opcinoes de List externo
-        for (int i=0; i<eventosPosibles.size(); i++){
-            System.out.print(i + "    " + eventosPosibles.get( i-1) + "\n");
+        
+        //listar las opciones de List externo
+        
+
+        Boolean typeExists = false;
+
+        while(!typeExists){
+            for (int i=0; i<eventosPosibles.size(); i++){
+                System.out.print(i+1 + "    " + eventosPosibles.get(i) + "\n");
+            }
+
+            System.out.print("\nSelecccione un tipo de Evento: ");
+            int Ntipo = Integer.parseInt(sc.nextLine());
+
+            if (Ntipo < eventosPosibles.size()+1){
+                evento.setTipo(eventosPosibles.get(Ntipo-1)); //Agrega el tipo a su atributo
+                typeExists = true;
+            }
+            else{
+                System.out.println("\n\n>>>>>No existe esa opcion\n");
+            }
         }
         
-        System.out.print("\nSelecccione un tipo de Evento: ");
-        evento.setTipo(eventosPosibles.get(Integer.parseInt(sc.nextLine())-1)); //Agrega el tipo a su atributo
-        
-        System.out.println("Ingrese el nombre del encargado");
+        System.out.print("\nIngrese el nombre del evento: ");
+        evento.setNombre(sc.nextLine());
+
+        System.out.print("\nIngrese el nombre del encargado: ");
         evento.setEncargado(sc.nextLine()); //agrega al atributo encargado
 
-        System.out.println("Ingrese la fecha de inicio del evento");
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-        // evento.setFecha_inicio(SimpleDateFormat(formato.parse(sc.nextLine()));
-
-        System.out.println("Ingrese la duracion en horas del evento");
-
-        System.out.println("Ingrese el numero de salon que quiere reservar");
-        
-        //listar los salones
-        //asignar valor aprobado false
+       
+        Boolean valido = true;
+        while (valido){
+            System.out.print("\nIngrese la fecha de inicio del evento (dd-MM-yyyy HH:mm): ");
+            String fecha = sc.nextLine(); 
     
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy HH:mm"); 
+            formato.setLenient(false);
+
+            try {
+                Date fecha_inicio = formato.parse(fecha);
+                evento.setFecha_inicio(fecha_inicio);
+                valido = false;
+
+            } catch (ParseException e){
+                System.out.print("\n>>>>Formato de fecha invalido");
+            }
+        }
+
+        System.out.print("\nIngrese la duracion en horas del evento: ");
+
+        Calendar horas = Calendar.getInstance();
+        horas.setTime(evento.getFecha_inicio());
+
+        horas.add(Calendar.HOUR_OF_DAY, Integer.parseInt(sc.nextLine()));
+
+        Date fechaFin = horas.getTime();
+        evento.setFecha_fin(fechaFin);
+
+        Boolean SalonExists = false;
+        while(!SalonExists){
+            for ( int i = 0; i<salones.size(); i++) {
+                System.out.print(i+1 + "    " + salones.get(i).toString() + "\n");
+                SalonExists = true;
+            }
+
+            System.out.print("\nIngrese el numero de salon que quiere reservar: ");
+            int opcion = Integer.parseInt(sc.nextLine());
+
+            if (salones.get(opcion-1).getTamano() != "Grande"){
+                evento.setSalon(salones.get(opcion-1));
+            }
+            else{
+
+                Boolean repeat = false;
+                for(int i=0; i<eventosVIP.size(); i++){
+
+                    if(evento.getTipo().equals(eventosVIP.get(i))){
+                        evento.setSalon(salones.get(opcion-1));
+                        SalonExists = true;
+                    }
+                    else{
+                        repeat = true;
+                    }
+                }
+                if(repeat){
+                    System.out.println(">>> El evento no cumple con los requisitos");
+                }
+            }
+
+        }
+        evento.setAprobado(false);
+        sc.close();
+        System.out.println(evento.toString());
+        return list;
     }
 }
